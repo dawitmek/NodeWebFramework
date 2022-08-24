@@ -11,9 +11,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="false"
-            aria-expanded="false" aria-label="Toggle-navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark pl-5" role="navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="false" aria-expanded="false" aria-label="Toggle-navigation">
             <span class="navbar-toggle-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a href="/" class="navbar-brand">Brand</a>
@@ -22,8 +22,40 @@
                     <a href="/home" class="nav-link">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                
+                <% if(currentUser != null) { %> 
+                    <li class="nav-item"><a class="nav-link">Welcome <%= currentUser.username %>!</a></li>
+                    <li class="nav-item"><a href="/logout" class="nav-link" id="login-btn">Logout</a></li>
+                <%  } %> 
+
+                <% if(currentUser == null) { %>
+                    <li class="nav-item"><a href="/login" class="nav-link" id="login-btn">Login</a></li>
+                    <li class="nav-item"><a href="/signup" class="nav-link" id="login-btn">Sign-up</a></li> 
+                <% }  %> 
             </ul>
         </div>
     </nav>
+    <!-- <style>
+        .form-div {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
+        }
+
+        form.login-form {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <script>
+        let formBtn = document.querySelector('#login-btn'),
+            formDiv = document.querySelector('.form-div');
+
+        formBtn.addEventListener('click', (e) => {
+            console.log('cicked');
+            formDiv.style = 'max-height: 500px;';
+        })
+    </script> -->
     <div class="container">

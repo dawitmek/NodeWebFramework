@@ -5,8 +5,7 @@ let express = require('express'),
     cookieParser = require('cookie-parser'),
     passport = require('passport'),
     session = require('express-session'),
-    flash = require('connect-flash'),
-    params = require('./params/params');
+    flash = require('connect-flash');
 
 let setUpPassport = require('./setuppassport.js');
 

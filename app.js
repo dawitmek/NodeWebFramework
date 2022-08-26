@@ -12,7 +12,7 @@ let setUpPassport = require('./setuppassport.js');
 
 let app = express()
 
-mongoose.connect(params.DATABASECONNECTION);
+mongoose.connect(process.env.DATABASECONNECTION);
 setUpPassport();
 
 app.set('port', process.env.PORT || 3000)
@@ -21,7 +21,7 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use(session({
-    secret: params.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }))

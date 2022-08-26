@@ -23,17 +23,18 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
             </ul>
-            <ul class="navbar-nav ml-auto">
-                
-                <% if(currentUser != null) { %> 
-                    <li class="nav-item"><a class="nav-link">Welcome <%= currentUser.username %>!</a></li>
-                    <li class="nav-item"><a href="/logout" class="nav-link" id="login-btn">Logout</a></li>
-                <%  } %> 
+            <ul class="navbar-nav ml-auto mr-2">
 
-                <% if(currentUser == null) { %>
+                <% if(currentUser !=null) { %>
+                    <li class="nav-item"><a class="nav-link">Welcome <%= currentUser.username %>!</a></li>
+                    <li class="nav-item"><a href="/posts" class="nav-link">Posts</a></li>
+                    <li class="nav-item"><a href="/logout" class="nav-link" id="login-btn">Logout</a></li>
+                <% } %>
+
+                <% if(currentUser==null) { %>
                     <li class="nav-item"><a href="/login" class="nav-link" id="login-btn">Login</a></li>
-                    <li class="nav-item"><a href="/signup" class="nav-link" id="login-btn">Sign-up</a></li> 
-                <% }  %> 
+                    <li class="nav-item"><a href="/signup" class="nav-link" id="login-btn">Sign-up</a></li>
+                <% } %>
             </ul>
         </div>
     </nav>
@@ -59,3 +60,15 @@
         })
     </script> -->
     <div class="container">
+
+        <% if(error && error.length> 0) { %>
+            <div class="alert alert-danger m-3" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <% if(info && info.length> 0) { %>
+            <div class="alert alert-info m-3" role="alert">
+                <%= info %>
+            </div>
+        <% } %>

@@ -1,5 +1,6 @@
 let express = require('express');
 let passport = require('passport');
+const Post = require('../../models/posts');
 
 let User = require('../../models/user');
 
@@ -16,6 +17,8 @@ router.get('/home', function (req, res) {
 router.get('/about', function (req, res) {
     res.render('./pages/about');
 })
+
+router.use("/posts", require("./post"));
 
 router.get('/login', function (req, res) {
     res.render('./pages/login');
@@ -67,5 +70,7 @@ router.post("/signup", function (req, res, next) {
         failureRedirect: "/login",
         failureFlash: true
     }));
+
+
 
 module.exports = router;
